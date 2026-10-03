@@ -110,9 +110,11 @@ header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-betw
 .carton input{text-align:center;padding:8px 2px;font-weight:700;font-variant-numeric:tabular-nums;width:100%}
 .carton input.ok{background:var(--hit);color:#fff;border-color:var(--hit)}
 .carton input.miss{border-color:var(--warn)}
+.carton input.dup{border-color:var(--ball);background:color-mix(in srgb,var(--ball) 14%,var(--surface));color:var(--ball)}
 .verdict{font-weight:700;font-size:18px}
 .verdict.win{color:var(--hit)}
 .verdict.no{color:var(--warn)}
+.verdict.dup{color:var(--ball)}
 .lines{display:flex;gap:16px;flex-wrap:wrap;font-variant-numeric:tabular-nums;color:var(--muted)}
 table{border-collapse:collapse;width:100%}
 .tablewrap{overflow-x:auto}
@@ -759,17 +761,25 @@ for(let l=0;l<3;l++)for(let c=0;c<5;c++){
   i.setAttribute('aria-label',`Ligne ${l+1}, numéro ${c+1}`);i.oninput=checkCarton;cIn.push(i);$('carton').appendChild(i);
 }
 function checkCarton(){
+  /* Un vrai carton n'a jamais deux fois le même numéro : un doublon est une erreur de saisie (ou une triche),
+     il ne compte pas dans les lignes et bloque le verdict tant qu'il n'est pas corrigé. */
+  const nums=cIn.map(i=>parseInt(i.value,10)),seen={};
+  nums.forEach(v=>{if(v>=1&&v<=90)seen[v]=(seen[v]||0)+1});
+  const dups=Object.keys(seen).filter(k=>seen[k]>1).map(Number);
   let full=0;const info=[];
   for(let l=0;l<3;l++){
     let have=0,ok=0;
-    for(let c=0;c<5;c++){const inp=cIn[l*5+c],v=parseInt(inp.value,10);inp.classList.remove('ok','miss');
-      if(v>=1&&v<=90){have++;if(S.drawn.includes(v)){ok++;inp.classList.add('ok')}else inp.classList.add('miss')}}
+    for(let c=0;c<5;c++){const inp=cIn[l*5+c],v=nums[l*5+c],dup=dups.includes(v);inp.classList.remove('ok','miss','dup');
+      inp.setAttribute('aria-invalid',dup);inp.title=dup?`Le ${v} est saisi plusieurs fois`:'';
+      if(dup)inp.classList.add('dup');
+      else if(v>=1&&v<=90){have++;if(S.drawn.includes(v)){ok++;inp.classList.add('ok')}else inp.classList.add('miss')}}
     if(have===5&&ok===5)full++;
     info.push(`Ligne ${l+1} : ${ok}/${have||5}`);
   }
   $('lineInfo').innerHTML=info.map(t=>`<span>${t}</span>`).join('');
   const ty=TYPES[E().type],need=ty.lines,v=$('verdict');
   if(!cIn.some(i=>i.value)){v.textContent='';v.className='verdict';return}
+  if(dups.length){v.textContent=`Doublon : ${dups.join(', ')} saisi${dups.length>1?'s':''} plusieurs fois. Corrige la saisie avant de vérifier.`;v.className='verdict dup';return}
   if(full>=need){v.textContent=`Carton valide pour ${label(P(),S.etape)} ✓`;v.className='verdict win'}
   else{v.textContent=`Pas encore : ${full} ligne${full>1?'s':''} complète${full>1?'s':''} sur ${need} requise${need>1?'s':''}`;v.className='verdict no'}
 }
