@@ -69,3 +69,17 @@ L'état du loto (parties, boules tirées, gagnants) est enregistré automatiquem
 | `logo.png` | Logo par défaut, à garder dans le même dossier que la page (le remplacer change le logo par défaut) |
 | `modele-lots-loto.csv` | Modèle de fichier de lots à importer |
 | `screenshot.png` | Capture d'écran de la régie utilisée dans ce README |
+| `CODE_OF_CONDUCT.md` | Code de conduite des contributeurs |
+| `LICENSE` | Texte de la licence GNU GPL version 2 |
+
+## Contribuer
+
+Les suggestions et corrections sont les bienvenues via les *issues* et les *pull requests* GitHub. Toute participation au projet est soumise au [code de conduite](CODE_OF_CONDUCT.md).
+
+## Licence
+
+Copyright (C) 2026 HappyManuDev
+
+Ce programme est un logiciel libre : vous pouvez le redistribuer et/ou le modifier selon les termes de la licence publique générale GNU (GNU GPL) telle que publiée par la Free Software Foundation, soit la version 2 de la licence, soit (à votre choix) toute version ultérieure (`GPL-2.0-or-later`).
+
+Ce programme est distribué dans l'espoir qu'il sera utile, mais SANS AUCUNE GARANTIE, sans même la garantie implicite de QUALITÉ MARCHANDE ou d'ADÉQUATION À UN USAGE PARTICULIER. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
