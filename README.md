@@ -4,6 +4,8 @@ Un tableau de bord simple pour animer un loto associatif : tirage des boules, su
 
 Tout tient dans un fichier HTML accompagné de son logo : pas d'installation, pas de serveur, pas de compte. On l'ouvre dans un navigateur et c'est parti.
 
+![Écran de la régie : partie en cours, bouton de tirage et tableau des 90 boules](screenshot.png)
+
 ## Démarrage
 
 1. Ouvrir `Dashboard_Loto.html` dans un navigateur récent (Chrome, Edge, Firefox).
@@ -66,3 +68,4 @@ L'état du loto (parties, boules tirées, gagnants) est enregistré automatiquem
 | `Dashboard_Loto.html` | L'application complète (HTML, CSS et JavaScript intégrés) |
 | `logo.png` | Logo par défaut, à garder dans le même dossier que la page (le remplacer change le logo par défaut) |
 | `modele-lots-loto.csv` | Modèle de fichier de lots à importer |
+| `screenshot.png` | Capture d'écran de la régie utilisée dans ce README |
