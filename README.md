@@ -2,7 +2,7 @@
 
 Un tableau de bord simple pour animer un loto associatif : tirage des boules, suivi des parties et des lots, vérification des cartons et affichage grand écran pour la salle.
 
-Tout tient dans un seul fichier HTML : pas d'installation, pas de serveur, pas de compte. On l'ouvre dans un navigateur et c'est parti.
+Tout tient dans un fichier HTML accompagné de son logo : pas d'installation, pas de serveur, pas de compte. On l'ouvre dans un navigateur et c'est parti.
 
 ## Démarrage
 
@@ -25,6 +25,7 @@ Une connexion Internet n'est utile que pour charger les polices ; la page foncti
 - **Déclarer un gagnant** puis passer à la phase suivante ; l'historique est visible dans l'onglet **Gagnants**.
 - **Vérifier un carton** : saisie des 15 numéros du carton annoncé, les numéros sortis passent au vert et le verdict s'affiche.
 - **Message salle** : afficher un bandeau sur l'écran de la salle (« Pause buvette 15 min », « Vérification en cours »…).
+- **Logo personnalisé** : « Changer le logo » remplace le logo de la régie et de l'écran salle par une image de son choix (PNG, JPG, SVG…) ; « Logo d'origine » revient au logo par défaut (`logo.png`). Le logo choisi est mémorisé dans le navigateur.
 
 ### Écran salle (projecteur / TV)
 
@@ -62,5 +63,6 @@ L'état du loto (parties, boules tirées, gagnants) est enregistré automatiquem
 
 | Fichier | Rôle |
 | --- | --- |
-| `Dashboard_Loto.html` | L'application complète (HTML, CSS, JavaScript et logo intégrés) |
+| `Dashboard_Loto.html` | L'application complète (HTML, CSS et JavaScript intégrés) |
+| `logo.png` | Logo par défaut, à garder dans le même dossier que la page (le remplacer change le logo par défaut) |
 | `modele-lots-loto.csv` | Modèle de fichier de lots à importer |
