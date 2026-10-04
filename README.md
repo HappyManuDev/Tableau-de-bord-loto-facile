@@ -1,4 +1,4 @@
-# Loto du SoBad
+# Tableau de bord pour Loto facile
 
 Un tableau de bord simple pour animer un loto associatif : tirage des boules, suivi des parties et des lots, vérification des cartons et affichage grand écran pour la salle.
 
